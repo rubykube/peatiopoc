@@ -28,7 +28,7 @@ class Orderbook < ApplicationRecord
 
     def create_model(ask_unit, bid_unit)
       model = "::Orderbook::#{ask_unit.upcase}#{bid_unit.upcase}"
-      class_eval <<-RUBY, __FILE__, __LINE__ + 1
+      instance_eval <<-RUBY, __FILE__, __LINE__ + 1
         class #{model} < ::Orderbook
           self.table_name = "orderbook_#{ask_unit.downcase}_#{bid_unit.downcase}"
 
@@ -38,7 +38,7 @@ class Orderbook < ApplicationRecord
             end
 
             def bid_unit
-              "#{ask_unit}"
+              "#{bid_unit}"
             end
           end
         end

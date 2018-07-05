@@ -22,4 +22,5 @@ end
 group :test do
   gem "rspec-rails",      "~> 3.7"
   gem "database_cleaner", "~> 1.7"
+  gem "mocha",            "~> 1.4", require: false
 end
